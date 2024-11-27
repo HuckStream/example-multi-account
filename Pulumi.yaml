@@ -1,0 +1,20 @@
+name: Example-Multi-Account
+runtime:
+  name: nodejs
+  options:
+    packagemanager: npm
+description: Example of single stack multi-account AWS access pattern
+config:
+  aws:region: us-east-1
+  namespace:
+    type: string
+    description: Namsepace for resources.
+    default: huckstream
+  environment:
+    type: string
+    description: Environment name.
+    default: sbx
+  name:
+    type: string
+    description: Resource name.
+    default: multi-account
