@@ -1,0 +1,25 @@
+{
+  "name": "example-multi-account",
+  "author": "Chris Koning <christopher.koning@gmail.com>",
+  "license": "MPL-2.0",
+  "version": "0.1.0",
+  "description": "Example of single stack multi-account AWS access pattern",
+  "repository": "github:HuckStream/example-multi-account",
+  "bugs": {
+    "url": "https://github.com/HuckStream/example-multi-account/issues",
+    "email": "christopher.koning@gmail.com"
+  },
+  "main": "index.ts",
+  "engines": {
+    "node": "20"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@pulumi/aws": "^6.0.0",
+    "@pulumi/awsx": "^2.0.2",
+    "@pulumi/pulumi": "^3.140.0"
+  }
+}
