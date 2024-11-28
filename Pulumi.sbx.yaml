@@ -1,5 +1,3 @@
 environment:
-  - aws/net # OIDC configuration for network account
-  - aws/sbx # OIDC configuration for sandbox account
-config:
-  environment: sbx
+  - aws/net # OIDC configuration for network account, see aws_net.yaml for environment contents
+  - aws/sbx # OIDC configuration for sandbox account, see aws_sbx.yaml for environment contents

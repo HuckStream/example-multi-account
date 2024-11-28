@@ -1,0 +1,27 @@
+# Contents of aws/net ESC environment
+#
+# Configure an AWS OIDC connection for use with an explicit provider
+# Key points:
+#   - AWS OIDC provider configured as per normal documention
+#     See: https://www.pulumi.com/docs/pulumi-cloud/access-management/oidc/provider/aws/
+#   - Name of login element is `aws-net`, not `aws`, preventing conflict and
+#     override during import or composition
+#   - No environment variables are set, as they would conflict with and override those of
+#     the default provider depending on import order
+#   - Cricical authentication values are passed into the Pulumi config, using
+#     the key names required by the aws.Provider constructor
+#     See: https://www.pulumi.com/registry/packages/aws/api-docs/provider/#inputs
+values:
+  aws-net:
+    login:
+      fn::open::aws-login:
+        oidc:
+          duration: 1h
+          roleArn: arn:aws:iam::123456789012:role/pulumi
+          sessionName: pulumi-net
+  pulumiConfig:
+    aws-net:
+      accessKey: ${aws-net.login.accessKeyId}
+      secretKey: ${aws-net.login.secretAccessKey}
+      token: ${aws-net.login.sessionToken}
+      region: us-east-1

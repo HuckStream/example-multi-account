@@ -1,0 +1,19 @@
+# Contents of aws/sbx ESC environment
+#
+# Normal configuration of default AWS provider as per documentation
+# See: https://www.pulumi.com/docs/pulumi-cloud/access-management/oidc/provider/aws/
+values:
+  aws:
+    login:
+      fn::open::aws-login:
+        oidc:
+          duration: 1h
+          roleArn: arn:aws:iam::987654321098:role/pulumi
+          sessionName: pulumi-sbx
+  environmentVariables:
+    AWS_ACCESS_KEY_ID: "${aws.login.accessKeyId}"
+    AWS_SECRET_ACCESS_KEY: "${aws.login.secretAccessKey}"
+    AWS_SESSION_TOKEN: "${aws.login.sessionToken}"
+  pulumiConfig:
+    aws:region: us-east-1
+    environment: sbx
